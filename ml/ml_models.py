@@ -17,10 +17,12 @@ def main():
     Vectorizers = [TfidfVectorizer(max_features=5000), CountVectorizer()]
     Vectorizer_Columns = ["tfidf", "count"]
     Models = [naive_bayes.MultinomialNB(), svm.SVC(C=1.0, kernel='linear', degree=3, gamma='auto'), LogisticRegression()]
+    Accuracies = []
 
     print("Splitting data...")
     Train_X, Test_X, Train_Y, Test_Y = model_selection.train_test_split(Corpus[processed_column],Corpus[target],test_size=0.3)
     for Model in Models:
+        current_accuracies = []
         for index, Vectorizer in enumerate(Vectorizers):
             Corpus[Vectorizer_Columns[index]] = Corpus[processed_column]
             print("Vectorizing", "...")
@@ -28,6 +30,9 @@ def main():
             print("Generating predictions", "...")
             score = generate_predictions(Model, Train_X_Vectorized, Test_X_Vectorized, Train_Y, Test_Y)
             print(Model, " with vectorizer ", Vectorizer_Columns[index] , " Accuracy Score -> ", score)
+            current_accuracies.append(round(score, 2))
+        Accuracies.append(current_accuracies)
+    print("Accuracies: ", Accuracies)
 
 def generate_predictions(Model, Train_X_Vectorized, Test_X_Vectorized, Train_Y, Test_Y):
     Model.fit(Train_X_Vectorized,Train_Y)
