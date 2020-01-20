@@ -18,3 +18,8 @@ The plan for the coming weeks is as follows.
 * Demonstration and implementation of baseline LSTM model to compare with BERT
 * Demonstration and implementation of the BERT language model
 * Other models (order to be decided later): UNILM, MASS, BART
+
+## Sources
+
+* https://github.com/umerhasan17/mlds
+* https://medium.com/@bedigunjit
