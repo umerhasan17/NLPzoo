@@ -1,7 +1,7 @@
 # NLPzoo
 A collection of the most popular Natural Language Processing algorithms, frameworks and applications (inspired by tensorlayer/RLzoo).
 
-## Sections
+## Folders
 
 ### Data
 * `disaster-tweets.csv` contains tweets about real disasters and exaggerated 'fake' tweets which are not directly related to any disaster. This dataset is part of the "Real or Not? NLP with Disaster Tweets" Kaggle competition. 
