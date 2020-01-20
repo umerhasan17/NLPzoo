@@ -1,9 +1,10 @@
-from ml_helper_functions import sentence_preprocessing, vectorize
-
 import pandas as pd
 from sklearn import model_selection, naive_bayes, svm
+from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
+from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
-from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
+
+from ml_helper_functions import sentence_preprocessing, vectorize
 
 
 def main():
@@ -15,7 +16,7 @@ def main():
     Corpus = sentence_preprocessing(pd.read_csv('../data/disaster-tweets.csv'), data_column, processed_column)
     Vectorizers = [TfidfVectorizer(max_features=5000), CountVectorizer()]
     Vectorizer_Columns = ["tfidf", "count"]
-    Models = [naive_bayes.MultinomialNB(), svm.SVC(C=1.0, kernel='linear', degree=3, gamma='auto')]
+    Models = [naive_bayes.MultinomialNB(), svm.SVC(C=1.0, kernel='linear', degree=3, gamma='auto'), LogisticRegression()]
 
     print("Splitting data...")
     Train_X, Test_X, Train_Y, Test_Y = model_selection.train_test_split(Corpus[processed_column],Corpus[target],test_size=0.3)
