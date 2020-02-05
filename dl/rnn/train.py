@@ -11,13 +11,11 @@ def train(model, model_optimizer, inp, target):
 
     for c in range(chunk_len):
         output, hidden = model(inp[c], hidden)
-        # loss += criterion(output, target[c])
         loss += criterion(output, target[c].unsqueeze(0))
 
     loss.backward()
     model_optimizer.step()
 
-    # return loss.data[0] / chunk_len
     return loss.data.item() / chunk_len 
 
 
