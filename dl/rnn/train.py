@@ -1,7 +1,8 @@
 import torch
 import torch.nn as nn
 from helper import *
-from rnn import VanillaRNN, GruRNN
+from rnn import VanillaRNN
+from gru import GruRNN
 from evaluate import evaluate
 
 def train(model, model_optimizer, inp, target):
