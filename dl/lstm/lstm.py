@@ -21,6 +21,3 @@ class LSTM(nn.Module):
         tag_space = self.hidden2tag(lstm_out.view(1, -1))
         tag_scores = F.log_softmax(tag_space, dim=1)
         return tag_scores
-    
-    def init_hidden(self):
-        return Variable(torch.zeros(1, 1, self.hidden_dim))

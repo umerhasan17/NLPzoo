@@ -5,7 +5,6 @@ from lstm import LSTM
 from evaluate import evaluate
 
 def train(model, model_optimizer, inp, target):
-    # hidden = model.init_hidden()
     model.zero_grad()
     loss = 0
 
