@@ -3,7 +3,7 @@ PAD_token = 0  # Used for padding short sentences
 SOS_token = 1  # Start-of-sentence token
 EOS_token = 2  # End-of-sentence token
 
-class Voc:
+class Vocabulary:
     def __init__(self, name):
         self.name = name
         self.trimmed = False
@@ -12,11 +12,11 @@ class Voc:
         self.index2word = {PAD_token: "PAD", SOS_token: "SOS", EOS_token: "EOS"}
         self.num_words = 3  # Count SOS, EOS, PAD
 
-    def addSentence(self, sentence):
+    def add_sentence(self, sentence):
         for word in sentence.split(' '):
-            self.addWord(word)
+            self.add_word(word)
 
-    def addWord(self, word):
+    def add_word(self, word):
         if word not in self.word2index:
             self.word2index[word] = self.num_words
             self.word2count[word] = 1
@@ -48,5 +48,5 @@ class Voc:
         self.num_words = 3 # Count default tokens
 
         for word in keep_words:
-            self.addWord(word)
+            self.add_word(word)
 
