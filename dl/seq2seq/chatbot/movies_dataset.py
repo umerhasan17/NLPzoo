@@ -111,7 +111,7 @@ def extract_sentence_pairs(conversations):
     return qa_pairs
 
 def write_sentence_pairs_to_csv(datafile, sentence_pairs):
-    print("\nWriting newly formatted file...")
+    print("\nWriting to newly formatted file...")
     delimiter = '\t'
     with open(datafile, 'w', encoding='utf-8') as outputfile:
         writer = csv.writer(outputfile, delimiter=delimiter)
@@ -121,4 +121,4 @@ def write_sentence_pairs_to_csv(datafile, sentence_pairs):
 
 # testing helper functions
 if __name__ == '__main__':
-    data_processing()
+    # formatted file has been created, no need to run this file again
