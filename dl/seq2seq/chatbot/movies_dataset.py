@@ -3,7 +3,7 @@ import csv
 
 
 def data_processing():
-    stem = "../../data/cornell-movie-dialogs-corpus/"
+    stem = "../../../data/cornell-movie-dialogs-corpus/"
     lines_path = stem + "movie_lines.txt"
     conversations_path = stem + "movie_conversations.txt"
     formatted_path = stem + "formatted_movie_lines.txt"
