@@ -1,19 +1,31 @@
+import csv
+
+
+
+def data_processing():
+    stem = "../../data/cornell-movie-dialogs-corpus/"
+    lines_path = stem + "movie_lines.txt"
+    conversations_path = stem + "movie_conversations.txt"
+    formatted_path = stem + "formatted_movie_lines.txt"
+
+    qa_pairs = import_movie_data(lines_path, conversations_path)
+    write_sentence_pairs_to_csv(formatted_path, qa_pairs) 
+
+
 """
     Example data in movie_lines.txt
     L1045 +++$+++ u0 +++$+++ m0 +++$+++ BIANCA +++$+++ They do not!
     [LineId]      [CharId]   [MovieId]  [CharName]     [Dialog]
 """
-
-
-def import_movie_data():
-    lines_path = "../../data/cornell-movie-dialogs-corpus/movie_lines.txt"
-    conversations_path = "../../data/cornell-movie-dialogs-corpus/movie_conversations.txt"
-
+def import_movie_data(lines_path, conversations_path):
     LINE_FIELDS = ["lineID", "characterID", "movieID", "character", "text"]
     CONVERSATION_FIELDS = ["character1ID", "character2ID", "movieID", "utteranceIDs"]
     
-    lines = loadLines(lines_path, LINE_FIELDS)
-    conversations = loadConversations(conversations_path, lines, CONVERSATION_FIELDS)
+    lines = load_lines(lines_path, LINE_FIELDS)
+    conversations = load_conversations(conversations_path, lines, CONVERSATION_FIELDS)
+    qa_pairs = extract_sentence_pairs(conversations)
+    return qa_pairs
+
     
 """
     Internal representation of lines is a dictionary i.e. object. 
@@ -26,7 +38,7 @@ def import_movie_data():
         'text': 'They do not!\n'
     }
 """
-def loadLines(file_path, fields):
+def load_lines(file_path, fields):
     lines = {}
     with open(file_path, 'r', encoding='iso-8859-1') as f:
         for line in f:
@@ -37,6 +49,7 @@ def loadLines(file_path, fields):
                 lineObj[field] = values[i]
             lines[lineObj['lineID']] = lineObj
     return lines
+
 
 """
     Internal representation of conversations is a list of dictionaries.
@@ -58,25 +71,54 @@ def loadLines(file_path, fields):
             ]
     }
 """
-def loadConversations(file_path, lines, fields):
+def load_conversations(file_path, lines, fields):
     conversations = []
     with open(file_path, 'r', encoding='iso-8859-1') as f:
         for line in f:
             values = line.split(" +++$+++ ")
             # Extract fields
-            convObj = {}
+            conv_obj = {}
             for i, field in enumerate(fields):
-                convObj[field] = values[i]
+                conv_obj[field] = values[i]
             # Convert string to list (convObj["utteranceIDs"] == "['L598485', 'L598486', ...]")
-            lineIds = eval(convObj["utteranceIDs"])
+            lineIds = eval(conv_obj["utteranceIDs"])
             # Reassemble lines
-            convObj["lines"] = []
+            conv_obj["lines"] = []
             for lineId in lineIds:
-                convObj["lines"].append(lines[lineId])
-            conversations.append(convObj)
+                conv_obj["lines"].append(lines[lineId])
+            conversations.append(conv_obj)
     return conversations
+
+
+"""
+    Internal representation of question answer pairs is a list.
+    The q_a is a list of 2 elements: [Question string, Answer string]
+    Example entry: 
+    ['Can we make this quick?  Roxanne Korrine and Andrew Barrett are having an incredibly horrendous public break- up on the quad.  Again.', 
+    "Well, I thought we'd start with pronunciation, if that's okay with you."]
+
+"""
+def extract_sentence_pairs(conversations):
+    qa_pairs = []
+    for conversation in conversations:
+        # Iterate over all the lines of the conversation
+        for i in range(len(conversation["lines"]) - 1):  # We ignore the last line (no answer for it)
+            input_line = conversation["lines"][i]["text"].strip()
+            target_line = conversation["lines"][i+1]["text"].strip()
+            # Filter wrong samples (if one of the lists is empty)
+            if input_line and target_line:
+                qa_pairs.append([input_line, target_line])
+    return qa_pairs
+
+def write_sentence_pairs_to_csv(datafile, sentence_pairs):
+    print("\nWriting newly formatted file...")
+    delimiter = '\t'
+    with open(datafile, 'w', encoding='utf-8') as outputfile:
+        writer = csv.writer(outputfile, delimiter=delimiter)
+        for pair in sentence_pairs:
+            writer.writerow(pair)
 
 
 # testing helper functions
 if __name__ == '__main__':
-    import_movie_data()
+    data_processing()
