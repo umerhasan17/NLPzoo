@@ -1,5 +1,6 @@
 import re
 import unicodedata
+from vocabulary import Vocabulary
 
 MAX_LENGTH = 10  # Maximum sentence length to consider
 MIN_COUNT = 3    # Minimum word count threshold for trimming
