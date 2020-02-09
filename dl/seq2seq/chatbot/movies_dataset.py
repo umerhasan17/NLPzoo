@@ -1,7 +1,5 @@
 import csv
 
-
-
 def data_processing():
     stem = "../../../data/cornell-movie-dialogs-corpus/"
     lines_path = stem + "movie_lines.txt"
