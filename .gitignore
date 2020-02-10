@@ -3,3 +3,4 @@
 .venv
 Pipfile
 data/
+.ipynb_checkpoints
