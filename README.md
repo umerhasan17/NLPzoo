@@ -8,9 +8,9 @@ A collection of the most popular Natural Language Processing algorithms, framewo
 
 * `shakespeare.txt` contains the complete texts of William Shakespeare. [Download here](https://ocw.mit.edu/ans7870/6/6.006/s08/lecturenotes/files/t8.shakespeare.txt)
  
-* `airline-tweets.csv` has tweets from 2015 from travellers expressing their feelings on their flying experience. [Download here] (https://www.kaggle.com/crowdflower/twitter-airline-sentiment)
+* `airline-tweets.csv` has tweets from 2015 from travellers expressing their feelings on their flying experience. [Download here](https://www.kaggle.com/crowdflower/twitter-airline-sentiment)
 
-* `cornell-movie-dialogs-corpus` is the classic Natural Language Processing training dataset. It contains 220,579 conversation exchanges. [Download here] (http://www.cs.cornell.edu/~cristian/Cornell_Movie-Dialogs_Corpus.html)
+* `cornell-movie-dialogs-corpus` is the classic Natural Language Processing training dataset. It contains 220,579 conversation exchanges. [Download here](http://www.cs.cornell.edu/~cristian/Cornell_Movie-Dialogs_Corpus.html)
 
 * `ubuntu-dialogs-corpus` dialogs taken from online chat forums on the topic of Ubuntu. [Download here](http://dataset.cs.mcgill.ca/ubuntu-corpus-1.0/)
 
