@@ -1,9 +1,16 @@
 # NLPzoo
 A collection of the most popular Natural Language Processing algorithms, frameworks and applications (inspired by tensorlayer/RLzoo).
 
-## Folders
+## Structure
 
-### Data (git ignored therefore not present here)
+### ML (Machine Learning)
+* This folder contains vanilla machine learning models classifiying sample text data. `ml_models.py` contains the main script used to compare the accuracy of the different models. Models include Naive Bayes and Support Vector Machines. Different vectorizers are also used with each type of model. So far this has not made a significant difference to the accuracy scores of a specific model. 
+
+### RNN (Recurrent Neural Network)
+
+* RNNs and flavours of RNNs were the main stay approach for most natural language processing tasks including language modelling, named entity recognition, parts of speech tagging and sentence classification. From 2013 to 2015, Long Short-Term Memory (LSTM) models became the dominant approach. This has since been superseded by RNNs with attention, and CNNs.
+
+### Data (not present here)
 * `disaster-tweets.csv` contains tweets about real disasters and exaggerated 'fake' tweets which are not directly related to any disaster. This dataset is part of the "Real or Not? NLP with Disaster Tweets" Kaggle competition. [Download here](https://www.kaggle.com/c/nlp-getting-started/data)
 
 * `shakespeare.txt` contains the complete texts of William Shakespeare. [Download here](https://ocw.mit.edu/ans7870/6/6.006/s08/lecturenotes/files/t8.shakespeare.txt)
@@ -13,9 +20,6 @@ A collection of the most popular Natural Language Processing algorithms, framewo
 * `cornell-movie-dialogs-corpus` is the classic Natural Language Processing training dataset. It contains 220,579 conversation exchanges. [Download here](http://www.cs.cornell.edu/~cristian/Cornell_Movie-Dialogs_Corpus.html)
 
 * `ubuntu-dialogs-corpus` dialogs taken from online chat forums on the topic of Ubuntu. [Download here](http://dataset.cs.mcgill.ca/ubuntu-corpus-1.0/)
-
-### ML (Machine Learning)
-* This folder contains vanilla machine learning models classifiying sample text data. `ml_models.py` contains the main script used to compare the accuracy of the different models. Models include Naive Bayes and Support Vector Machines. Different vectorizers are also used with each type of model. So far this has not made a significant difference to the accuracy scores of a specific model. 
 
 ## TODO
 
