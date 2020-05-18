@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 from torch.autograd import Variable
 
+
 class VanillaRNN(nn.Module):
     def __init__(self, input_size, hidden_size, output_size, n_layers=1):
         super(VanillaRNN, self).__init__()
@@ -12,7 +13,7 @@ class VanillaRNN(nn.Module):
         self.encoder = nn.Embedding(input_size, hidden_size)
         self.rnn = nn.RNN(hidden_size, hidden_size, self.n_layers)
         self.fc = nn.Linear(hidden_size, output_size)
-        
+
     def forward(self, input, hidden):
         input = self.encoder(input.view(1, -1))
         output, hidden = self.rnn(input, hidden)
