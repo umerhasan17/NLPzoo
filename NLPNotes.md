@@ -33,7 +33,11 @@ Therefore they store both position information and embedding information.
 * Huggingface embedding functions
 
 
+## Language Models
 
+* **Probabilistic Language Modeling** 
+
+https://web.stanford.edu/class/cs124/lec/languagemodeling.pdf
 
 # Sources
 
