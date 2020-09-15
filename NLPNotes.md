@@ -39,6 +39,12 @@ Therefore they store both position information and embedding information.
 
 https://web.stanford.edu/class/cs124/lec/languagemodeling.pdf
 
+# Background ML Terminology
+
+* Supervised learning is when data is provided with the correct labels. Examples include: regression, classification, SVM
+* Unsupervised learning is when data does not contain labels. Example include: K-Means, PCA, collaborative filtering
+
+
 # Sources
 
 https://developers.google.com/machine-learning/crash-course/embeddings/video-lecture
